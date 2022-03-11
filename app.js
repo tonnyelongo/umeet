@@ -4,11 +4,9 @@ var cors = require('cors')
 const session=require("express-session")
 var FileStore = require('session-file-store')(session);
 const app = express()
-const mysql=require("mysql");
 const bodyParser = require('body-parser')
 const path = require("path")
 var xss = require("xss")
-//const subdomain=require("express-subdomain");
 const fs = require('fs')
 
 
