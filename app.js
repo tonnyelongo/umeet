@@ -11,7 +11,7 @@ const fs = require('fs')
 
 
 
-app.get("/sistema",(req,res)=>{
+app.get("/",(req,res)=>{
 	app.use(express.static(__dirname+"/build"))
 	res.sendFile(path.join(__dirname+"/build/index.html"))
 })
@@ -27,7 +27,12 @@ app.use(session({ secret: 'keyboard cat',
 
 
 var server = https.createServer(app)
-var io = require('socket.io')(server)
+var io = require('socket.io')(server, {
+  cors: {
+    origin: "*",
+    methods: ["GET", "POST"]
+  }
+})
 
 app.use(cors())
 app.use(bodyParser.json())
